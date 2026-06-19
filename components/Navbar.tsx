@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { useCart } from './CartContext';
 import { ShoppingBag, Sparkles, MapPin, Menu, X } from 'lucide-react';
 
@@ -39,10 +40,15 @@ export default function Navbar() {
         
         {/* Logo */}
         <a href="/" className="flex items-center gap-2 group">
-          <span className="font-display font-black text-2xl md:text-3xl tracking-tight text-brown-dark relative">
-            ameeco<span className="text-accent text-3xl">.</span>
-            <span className="absolute -bottom-1 left-0 w-0 h-1 bg-brown-dark transition-all group-hover:w-full rounded" />
-          </span>
+          <div className="relative w-28 h-8 md:w-36 md:h-10">
+            <Image
+              src="/Content.svg"
+              alt="ameeco"
+              fill
+              className="object-contain select-none pointer-events-none"
+              priority
+            />
+          </div>
           <span className="hidden sm:inline-flex items-center gap-1 bg-brown-dark text-cream-light font-display text-[9px] font-bold px-2 py-0.5 rounded-full tracking-widest uppercase">
             <Sparkles className="w-2.5 h-2.5 text-accent animate-pulse" /> EGGLESS
           </span>

@@ -7,18 +7,21 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
-  type: 'cookie' | 'gelato' | 'combo';
+  type: 'cookie' | 'gelato' | 'combo' | 'other';
   details?: string;
 }
 
 interface CartContextType {
   cart: CartItem[];
   addToCart: (item: Omit<CartItem, 'quantity'>) => void;
+  buyNow: (item: Omit<CartItem, 'quantity'>) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, delta: number) => void;
   clearCart: () => void;
   isCartOpen: boolean;
   setIsCartOpen: (open: boolean) => void;
+  checkoutStep: 'cart' | 'shipping' | 'success';
+  setCheckoutStep: (step: 'cart' | 'shipping' | 'success') => void;
   cartTotal: number;
   cartCount: number;
 }
@@ -28,6 +31,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [checkoutStep, setCheckoutStep] = useState<'cart' | 'shipping' | 'success'>('cart');
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -56,7 +60,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }
       return [...prev, { ...item, quantity: 1 }];
     });
-    setIsCartOpen(true); // Automatically open cart drawer when item is added
+    setCheckoutStep('cart');
+    setIsCartOpen(true);
+  };
+
+  const buyNow = (item: Omit<CartItem, 'quantity'>) => {
+    setCart((prev) => {
+      const existing = prev.find((i) => i.id === item.id);
+      if (existing) {
+        return prev.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+        );
+      }
+      return [...prev, { ...item, quantity: 1 }];
+    });
+    setCheckoutStep('shipping');
+    setIsCartOpen(true);
   };
 
   const removeFromCart = (id: string) => {
@@ -89,11 +108,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       value={{
         cart,
         addToCart,
+        buyNow,
         removeFromCart,
         updateQuantity,
         clearCart,
         isCartOpen,
         setIsCartOpen,
+        checkoutStep,
+        setCheckoutStep,
         cartTotal,
         cartCount,
       }}

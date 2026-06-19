@@ -14,9 +14,10 @@ export default function Cart() {
     updateQuantity,
     cartTotal,
     clearCart,
+    checkoutStep,
+    setCheckoutStep,
   } = useCart();
 
-  const [checkoutStep, setCheckoutStep] = useState<'cart' | 'shipping' | 'success'>('cart');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('Gurgaon');
   const [phone, setPhone] = useState('');
@@ -58,7 +59,7 @@ export default function Cart() {
 
       {/* Drawer Panel */}
       <div className="relative w-full max-w-md bg-cream-default h-full border-l-4 border-brown-dark shadow-[-8px_0px_24px_rgba(60,34,24,0.15)] flex flex-col z-10 animate-in slide-in-from-right duration-300">
-        
+
         {/* Header */}
         <div className="p-6 border-b-2 border-brown-dark flex items-center justify-between bg-cream-warm">
           <div className="flex items-center gap-2">
@@ -104,7 +105,7 @@ export default function Cart() {
                     >
                       {/* CSS-based Mini Visual Icon */}
                       <div className="w-12 h-12 rounded-xl bg-cream-warm border border-brown-dark/20 flex items-center justify-center flex-shrink-0 text-lg">
-                        {item.type === 'cookie' ? '🍪' : item.type === 'gelato' ? '🍧' : '🎁'}
+                        {item.type === 'cookie' ? '🍪' : item.type === 'gelato' ? '🍧' : item.type === 'other' ? '🥐' : '🎁'}
                       </div>
 
                       {/* Item Info */}
@@ -115,7 +116,7 @@ export default function Cart() {
                         <p className="text-[10px] font-semibold text-brown-light truncate mb-2">
                           {item.details}
                         </p>
-                        
+
                         <div className="flex items-center justify-between">
                           {/* Quantity selector */}
                           <div className="flex items-center border border-brown-dark rounded-lg overflow-hidden bg-cream-light">
@@ -135,7 +136,7 @@ export default function Cart() {
                               <Plus className="w-3 h-3" />
                             </button>
                           </div>
-                          
+
                           {/* Price details */}
                           <span className="font-display font-black text-sm text-brown-dark">
                             ₹{item.price * item.quantity}
@@ -162,7 +163,7 @@ export default function Cart() {
               <h3 className="font-display font-black text-sm text-brown-light tracking-widest uppercase mb-2">
                 SHIPPING DETAILS
               </h3>
-              
+
               <div>
                 <label className="block font-display font-bold text-xs text-brown-dark uppercase mb-1">
                   DELIVERY CITY
@@ -171,22 +172,20 @@ export default function Cart() {
                   <button
                     type="button"
                     onClick={() => setCity('Gurgaon')}
-                    className={`py-2 rounded-lg border-2 font-display font-bold text-xs transition-all ${
-                      city === 'Gurgaon'
+                    className={`py-2 rounded-lg border-2 font-display font-bold text-xs transition-all ${city === 'Gurgaon'
                         ? 'bg-brown-dark text-cream-light border-brown-dark'
                         : 'bg-white text-brown-dark border-brown-dark/20 hover:border-brown-dark'
-                    }`}
+                      }`}
                   >
                     GURGAON
                   </button>
                   <button
                     type="button"
                     onClick={() => setCity('Delhi')}
-                    className={`py-2 rounded-lg border-2 font-display font-bold text-xs transition-all ${
-                      city === 'Delhi'
+                    className={`py-2 rounded-lg border-2 font-display font-bold text-xs transition-all ${city === 'Delhi'
                         ? 'bg-brown-dark text-cream-light border-brown-dark'
                         : 'bg-white text-brown-dark border-brown-dark/20 hover:border-brown-dark'
-                    }`}
+                      }`}
                   >
                     DELHI
                   </button>
@@ -255,7 +254,7 @@ export default function Cart() {
               <p className="text-sm font-medium text-brown-light leading-relaxed mb-6 max-w-[260px]">
                 Your gourmet treats are being packed. We will ping you on Whatsapp at <strong className="text-brown-dark">{phone}</strong> with tracking details.
               </p>
-              
+
               <button
                 onClick={handleCloseSuccess}
                 className="w-full py-4 border-2 border-brown-dark bg-brown-dark text-cream-light rounded-xl font-display font-black text-xs tracking-widest uppercase hover:bg-brown-default shadow-[3px_3px_0px_0px_rgba(217,119,6,1)]"

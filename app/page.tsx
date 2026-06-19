@@ -11,117 +11,10 @@ import Customizer from '../components/Customizer';
 import Cart from '../components/Cart';
 import { Sparkles, MapPin, ArrowRight, ShieldCheck, Flame, Star, Coffee } from 'lucide-react';
 
-const PRODUCTS_DATA: Product[] = [
-  {
-    id: 'og-chocochunk',
-    name: 'OG Chocochunk',
-    price: 150,
-    description: 'Thick, golden-baked, and loaded with molten premium chocolate chips.',
-    type: 'cookie',
-    calories: 380,
-    badge: 'Bestseller',
-    color: 'from-amber-100/50 to-amber-200/30',
-    accentColor: 'text-amber-800',
-    visual: 'og_cookie',
-  },
-  {
-    id: 'red-era',
-    name: 'Red Era',
-    price: 170,
-    description: 'Red velvet chunky cookie packed with high-grade cream cheese filling.',
-    type: 'cookie',
-    calories: 410,
-    badge: 'Trending',
-    color: 'from-rose-50 to-rose-100',
-    accentColor: 'text-rose-700',
-    visual: 'red_velvet',
-  },
-  {
-    id: 'chocolate-lava',
-    name: 'Chocolate Lava',
-    price: 180,
-    description: 'Fudgy, brownie-like texture with a flowing molten chocolate center.',
-    type: 'cookie',
-    calories: 430,
-    badge: 'Eggless',
-    color: 'from-amber-950/10 to-amber-950/20',
-    accentColor: 'text-amber-950',
-    visual: 'chocolate_lava',
-  },
-  {
-    id: 'toffee-pecan',
-    name: 'Toffee Pecan Trouble',
-    price: 190,
-    description: 'Brown-butter base with roasted pecans, crunchy toffee bits, and sea salt.',
-    type: 'cookie',
-    calories: 450,
-    badge: 'Gourmet',
-    color: 'from-amber-50 to-amber-100/70',
-    accentColor: 'text-amber-800',
-    visual: 'pecan',
-  },
-  {
-    id: 'boujee-biscoff',
-    name: 'Boujee Biscoff',
-    price: 190,
-    description: 'Buttery cookie filled to the brim with warm, flowing Biscoff spread.',
-    type: 'cookie',
-    calories: 470,
-    badge: 'Viral',
-    color: 'from-yellow-50 to-yellow-100',
-    accentColor: 'text-amber-600',
-    visual: 'biscoff',
-  },
-  {
-    id: 'dubai-kunafa',
-    name: 'Dubai Kunafa Gelato',
-    price: 250,
-    description: 'Creamy traditional Kunafa gelato loaded with butter-roasted kunafa crackle.',
-    type: 'gelato',
-    calories: 340,
-    badge: 'Viral Special',
-    color: 'from-yellow-100/40 to-yellow-200/30',
-    accentColor: 'text-yellow-600',
-    visual: 'kunafa',
-  },
-  {
-    id: 'berry-cheesy',
-    name: 'Berry Cheesy Gelato',
-    price: 220,
-    description: 'Gourmet cheesecake gelato base swirled with fresh blueberry compote.',
-    type: 'gelato',
-    calories: 290,
-    badge: 'Popular',
-    color: 'from-purple-50 to-purple-100',
-    accentColor: 'text-purple-700',
-    visual: 'berry_cheesy',
-  },
-  {
-    id: 'nutty-nutella',
-    name: 'Nutty Nutella Gelato',
-    price: 230,
-    description: 'Rich milk chocolate hazelnut gelato swirled with original creamy Nutella.',
-    type: 'gelato',
-    calories: 325,
-    color: 'from-amber-100/30 to-amber-200/20',
-    accentColor: 'text-amber-900',
-    visual: 'nutella',
-  },
-  {
-    id: 'twirky-twix',
-    name: 'Twirky Twix Gelato',
-    price: 240,
-    description: 'Velvety caramel-infused gelato loaded with chopped crunchy Twix bits.',
-    type: 'gelato',
-    calories: 310,
-    color: 'from-yellow-50 to-yellow-100/70',
-    accentColor: 'text-yellow-700',
-    visual: 'twix',
-  },
-];
+import { PRODUCTS_DATA } from '../data/products';
 
 export default function Home() {
-  const [filter, setFilter] = useState<'all' | 'cookie' | 'gelato'>('all');
+  const [filter, setFilter] = useState<'all' | 'cookie' | 'gelato' | 'other'>('all');
 
   const filteredProducts = PRODUCTS_DATA.filter((p) => filter === 'all' || p.type === filter);
 
@@ -129,13 +22,13 @@ export default function Home() {
   return (
     <CartProvider>
       <div className="min-h-screen flex flex-col bg-cream-default text-brown-dark relative overflow-x-hidden selection:bg-accent selection:text-white">
-        
+
         {/* Floating navbar */}
         <Navbar />
 
         {/* Hero Section */}
         <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          
+
           {/* Hero Content Left */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8">
             <span className="inline-flex items-center gap-1 bg-brown-dark text-cream-light font-display text-[10px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase shadow-[3px_3px_0px_0px_rgba(217,119,6,1)]">
@@ -204,7 +97,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Category 1: Cookies */}
-            <a href="#menu" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <a href="/category/cookie" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_cookies.png"
@@ -226,7 +119,7 @@ export default function Home() {
             </a>
 
             {/* Category 2: Gelato */}
-            <a href="#menu" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <a href="/category/gelato" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_gelato.png"
@@ -248,7 +141,7 @@ export default function Home() {
             </a>
 
             {/* Category 3: Other Treats */}
-            <a href="#menu" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <a href="/category/other" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_other.png"
@@ -273,47 +166,53 @@ export default function Home() {
 
         {/* Menu Section */}
         <section id="menu" className="max-w-7xl mx-auto w-full px-4 py-24 md:px-8">
-          
+
           {/* Header */}
           <div className="text-center max-w-xl mx-auto mb-16">
-            <h2 className="font-display font-black text-4xl md:text-5xl text-brown-dark tracking-tight uppercase mb-4">
-              THE FLAVOR STATION
+            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-brown-dark tracking-tight uppercase leading-none mb-6">
+              Flavour item
             </h2>
             <p className="font-medium text-brown-light leading-relaxed">
               Explore our core catalog. Everything is vegetarian, 100% eggless, and handcrafted daily with premium cocoa and organic fruit bases.
             </p>
-
+ 
             {/* Filter controls */}
-            <div className="flex justify-center gap-2 mt-8 bg-cream-warm border border-brown-dark/20 p-1.5 rounded-2xl w-fit mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 mt-8 bg-cream-warm border border-brown-dark/20 p-1.5 rounded-2xl w-fit mx-auto">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${
-                  filter === 'all'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'all'
                     ? 'bg-brown-dark text-cream-light'
                     : 'text-brown-light hover:text-brown-dark'
-                }`}
+                  }`}
               >
                 ALL CHEWS & SCOOPS
               </button>
               <button
                 onClick={() => setFilter('cookie')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${
-                  filter === 'cookie'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'cookie'
                     ? 'bg-brown-dark text-cream-light'
                     : 'text-brown-light hover:text-brown-dark'
-                }`}
+                  }`}
               >
                 NYC COOKIES 🍪
               </button>
               <button
                 onClick={() => setFilter('gelato')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${
-                  filter === 'gelato'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'gelato'
                     ? 'bg-brown-dark text-cream-light'
                     : 'text-brown-light hover:text-brown-dark'
-                }`}
+                  }`}
               >
                 ITALIAN GELATO 🍧
+              </button>
+              <button
+                onClick={() => setFilter('other')}
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'other'
+                    ? 'bg-brown-dark text-cream-light'
+                    : 'text-brown-light hover:text-brown-dark'
+                  }`}
+              >
+                OTHER TREATS 🥐
               </button>
             </div>
           </div>
@@ -352,7 +251,7 @@ export default function Home() {
 
           {/* Cards Grid */}
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-            
+
             {/* Card 1 */}
             <div className="bg-white border-2 border-brown-dark rounded-3xl p-6 shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col justify-between min-h-[180px] group">
               <span className="text-3xl block mb-4 group-hover:scale-110 transition-transform w-fit">🥄</span>
@@ -462,7 +361,7 @@ export default function Home() {
 
         {/* Brand Vibe Section (Bento grid setup) */}
         <section id="story" className="max-w-7xl mx-auto w-full px-4 py-20 md:px-8 border-t-2 border-dashed border-brown-dark/20">
-          
+
           {/* Header */}
           <div className="text-center max-w-xl mx-auto mb-16">
             <h2 className="font-display font-black text-4xl md:text-5xl text-brown-dark tracking-tight uppercase mb-4">
@@ -475,7 +374,7 @@ export default function Home() {
 
           {/* Bento grid layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             {/* Bento Card 1 */}
             <div className="bg-white border-2 border-brown-dark rounded-3xl p-8 flex flex-col justify-between shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] min-h-[260px] group hover:-translate-y-1 transition-all">
               <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center border border-brown-dark/15 text-2xl group-hover:scale-110 transition-transform">
@@ -599,3 +498,4 @@ export default function Home() {
     </CartProvider>
   );
 }
+
