@@ -22,6 +22,7 @@
   
   --font-display: var(--font-outfit);
   --font-body: var(--font-plus-jakarta-sans);
+  --font-serif-luxury: var(--font-cormorant);
 }
 
 body {
@@ -58,6 +59,15 @@ body {
   animation: spin-slow 20s linear infinite;
 }
 
+@keyframes letter-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-letter-float {
+  animation: letter-float 3.5s ease-in-out infinite;
+}
+
 /* Custom scrollbar matching cream & brown theme */
 ::-webkit-scrollbar {
   width: 10px;
@@ -72,4 +82,5 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #3c2218;
 }
+
 

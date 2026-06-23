@@ -54,14 +54,42 @@ export default function Home() {
             <div className="flex flex-col items-center w-full">
               {/* Massive Heading */}
               <div className="w-full flex justify-center mt-6">
-                <h1 className="font-display font-black text-[12vw] md:text-[9vw] lg:text-[8.5vw] leading-none tracking-tight flex items-center justify-center gap-1.5 md:gap-3.5 uppercase text-white select-none relative">
-                  <span>A</span>
-                  <span>M</span>
-                  <span>E</span>
-                  <span>E</span>
-                  <span>C</span>
+                <h1 className="font-serif-luxury font-bold italic text-[12vw] md:text-[9vw] lg:text-[8.5vw] leading-none tracking-tight flex items-center justify-center gap-1.5 md:gap-3.5 select-none relative">
+                  <span 
+                    className="animate-letter-float bg-gradient-to-b from-orange-200 via-orange-400 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.4)] select-none"
+                    style={{ animationDelay: '0ms' }}
+                  >
+                    A
+                  </span>
+                  <span 
+                    className="animate-letter-float text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] select-none"
+                    style={{ animationDelay: '150ms' }}
+                  >
+                    M
+                  </span>
+                  <span 
+                    className="animate-letter-float text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] select-none"
+                    style={{ animationDelay: '300ms' }}
+                  >
+                    E
+                  </span>
+                  <span 
+                    className="animate-letter-float text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.25)] select-none"
+                    style={{ animationDelay: '450ms' }}
+                  >
+                    E
+                  </span>
+                  <span 
+                    className="animate-letter-float bg-gradient-to-b from-orange-200 via-orange-400 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(249,115,22,0.4)] select-none"
+                    style={{ animationDelay: '600ms' }}
+                  >
+                    C
+                  </span>
                   {/* The Cookie replacing the O */}
-                  <div className="relative w-[13vw] h-[13vw] md:w-[10.5vw] md:h-[10.5vw] lg:w-[9.5vw] lg:h-[9.5vw] rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-4 border-white/5 shrink-0 select-none mx-[-1%] z-10 transition-transform duration-300 hover:scale-105">
+                  <div 
+                    className="animate-letter-float relative w-[13vw] h-[13vw] md:w-[10.5vw] md:h-[10.5vw] lg:w-[9.5vw] lg:h-[9.5vw] rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-4 border-white/5 shrink-0 select-none mx-[-1%] z-10 transition-transform duration-300 hover:scale-105"
+                    style={{ animationDelay: '750ms' }}
+                  >
                     <Image
                       src="/cookie_hero.png"
                       alt="O"
@@ -70,6 +98,13 @@ export default function Home() {
                       priority
                     />
                   </div>
+                  {/* Sparkles Emoji */}
+                  <span 
+                    className="animate-letter-float text-orange-400 drop-shadow-[0_0_20px_rgba(249,115,22,0.6)] select-none text-[8vw] md:text-[6vw] lg:text-[5.5vw] ml-0.5"
+                    style={{ animationDelay: '900ms' }}
+                  >
+                    ✨
+                  </span>
                 </h1>
               </div>
 
@@ -116,29 +151,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Customer Testimonial Proof */}
-            <div className="w-full flex justify-center md:justify-end mt-12 md:mt-2 px-4 md:px-8">
-              <div className="flex flex-col items-center md:items-end text-center md:text-right gap-1 bg-[#2e160e]/40 border border-white/5 p-3 rounded-2xl backdrop-blur-sm max-w-[240px]">
-                <div className="flex items-center gap-1.5">
-                  <div className="flex -space-x-1.5">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces" alt="user" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces" alt="user" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces" alt="user" />
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=faces" alt="user" />
-                  </div>
-                  <div className="w-6.5 h-6.5 rounded-full bg-white text-brown-dark flex items-center justify-center shadow-md cursor-pointer hover:bg-cream-warm transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#432317]" />
-                  </div>
-                </div>
-                <p className="text-[10px] text-white/70 font-semibold tracking-wider uppercase mt-1 leading-normal">
-                  Over 10,000+ cookie lovers served in Delhi & Gurgaon.
-                </p>
-              </div>
-            </div>
 
             {/* Bottom preview grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center w-full mt-12 md:mt-16 border-t border-white/10 pt-8">
