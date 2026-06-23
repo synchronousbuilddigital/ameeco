@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { CartProvider } from '../../../components/CartContext';
 import Navbar from '../../../components/Navbar';
 import Cart from '../../../components/Cart';
@@ -54,11 +55,11 @@ export default function CategoryPage({ params }: PageProps) {
             <span className="text-6xl">🔍</span>
             <h1 className="font-display font-black text-4xl uppercase text-brown-dark">Category Not Found</h1>
             <p className="text-sm font-semibold text-brown-light max-w-md">
-              We couldn't find the sweet treats you are looking for. Explore our standard NYC cookies and slow-churned gelatos!
+              We couldn&apos;t find the sweet treats you are looking for. Explore our standard NYC cookies and slow-churned gelatos!
             </p>
-            <a href="/" className="px-6 py-3.5 bg-brown-dark text-cream-light font-display font-black text-xs tracking-widest rounded-xl border-2 border-brown-dark shadow-[4px_4px_0px_0px_rgba(217,119,6,1)] hover:-translate-y-0.5 transition-transform uppercase">
+            <Link href="/" className="px-6 py-3.5 bg-brown-dark text-cream-light font-display font-black text-xs tracking-widest rounded-xl border-2 border-brown-dark shadow-[4px_4px_0px_0px_rgba(217,119,6,1)] hover:-translate-y-0.5 transition-transform uppercase">
               Back to Home
-            </a>
+            </Link>
           </main>
           <Cart />
         </div>
@@ -76,17 +77,17 @@ export default function CategoryPage({ params }: PageProps) {
         <Navbar />
 
         {/* Dynamic Category Hero Section */}
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-12 md:px-8 relative z-10">
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-28 pb-12 md:pt-36 md:px-8 relative z-10">
           
           {/* Back Button */}
           <div className="mb-8">
-            <a
+            <Link
               href="/#menu"
               className="inline-flex items-center gap-2 text-xs font-black tracking-wider uppercase text-brown-light hover:text-brown-dark transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               BACK TO MENU
-            </a>
+            </Link>
           </div>
 
           {/* Heading block */}
@@ -120,15 +121,15 @@ export default function CategoryPage({ params }: PageProps) {
               BUILD A CUSTOM COMBO BOX
             </h2>
             <p className="text-sm font-semibold text-brown-light leading-relaxed max-w-xl mx-auto mb-6">
-              Can't settle on just one flavor? Mix and match your favorite cookies and gelatos into a custom combo box of 4, 6, or 12 to unlock special discounts!
+              Can&apos;t settle on just one flavor? Mix and match your favorite cookies and gelatos into a custom combo box of 4, 6, or 12 to unlock special discounts!
             </p>
-            <a
+            <Link
               href="/#customize"
               className="inline-flex items-center gap-2 h-12 px-8 bg-brown-dark hover:bg-brown-default text-cream-light font-display font-black text-xs tracking-widest rounded-xl border-2 border-brown-dark shadow-[4px_4px_0px_0px_rgba(217,119,6,1)] hover:-translate-y-0.5 active:translate-y-0 transition-transform uppercase cursor-pointer"
             >
               LAUNCH BOX CUSTOMIZER
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </div>
 
         </main>
@@ -165,12 +166,11 @@ export default function CategoryPage({ params }: PageProps) {
                 NAVIGATION
               </h4>
               <div className="grid grid-cols-2 gap-3 font-display font-bold text-sm text-cream-dark/80">
-                <a href="/" className="hover:text-white transition-colors">Home</a>
-                <a href="/#menu" className="hover:text-white transition-colors">Order</a>
-                <a href="/about" className="hover:text-white transition-colors">About Us</a>
-                <a href="/gifting" className="hover:text-white transition-colors">Corporate Gifting</a>
-                <a href="/contact" className="hover:text-white transition-colors">Contact Us</a>
-                <a href="/work" className="hover:text-white transition-colors">Work With Us</a>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/#menu" className="hover:text-white transition-colors">Order</Link>
+                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+                <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+                <Link href="/work" className="hover:text-white transition-colors">Work With Us</Link>
               </div>
             </div>
 

@@ -8,7 +8,6 @@ import {
   Phone, 
   Mail, 
   MessageSquare, 
-  Sparkles, 
   ArrowRight, 
   Heart, 
   MapPin, 
@@ -75,7 +74,7 @@ export default function ContactPage() {
         <Navbar />
 
         {/* Contact Body Container */}
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-12 md:px-8 relative z-10 flex flex-col gap-12">
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-28 pb-12 md:pt-36 md:px-8 relative z-10 flex flex-col gap-12">
           
           {/* Decorative animations */}
           <div className="absolute top-1/3 left-10 w-24 h-24 bg-accent/5 rounded-full blur-2xl pointer-events-none animate-float-slow" />

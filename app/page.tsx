@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { CartProvider } from '../components/CartContext';
 import Navbar from '../components/Navbar';
-import ThreeDCanvas from '../components/ThreeDCanvas';
 import InteractiveTicker from '../components/InteractiveTicker';
-import ProductCard, { Product } from '../components/ProductCard';
+import ProductCard from '../components/ProductCard';
 import Customizer from '../components/Customizer';
 import Cart from '../components/Cart';
-import { Sparkles, MapPin, ArrowRight, ShieldCheck, Flame, Star, Coffee } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 import { PRODUCTS_DATA } from '../data/products';
 
@@ -27,62 +27,158 @@ export default function Home() {
         <Navbar />
 
         {/* Hero Section */}
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-8 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <section className="relative w-full min-h-screen bg-[#432317] text-white pt-24 md:pt-28 pb-8 px-4 md:px-8 border-b-4 border-brown-dark overflow-hidden flex flex-col items-center justify-center">
+          {/* Background image related to the website (blended with opacity under the color cover) */}
+          <div className="absolute inset-0 w-full h-full z-0 select-none pointer-events-none">
+            <Image
+              src="/hero_dessert.png"
+              alt="Dessert Background"
+              fill
+              className="object-cover opacity-15"
+              priority
+            />
+          </div>
+          {/* Subtle background crumbs pattern / vignette */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#582f20]/95 to-[#29140c]/95 opacity-95 z-0" />
+          
+          {/* Floating crumb particle decorations */}
+          <div className="absolute top-[20%] left-[10%] w-3 h-3 bg-amber-950/40 rounded-full blur-[1px] animate-float-slow z-0" />
+          <div className="absolute top-[70%] left-[8%] w-4 h-4 bg-amber-950/30 rounded-full blur-[1.5px] animate-float-slow z-0" />
+          <div className="absolute top-[15%] right-[15%] w-4 h-4 bg-amber-950/35 rounded-full blur-[1.5px] animate-float-slow z-0" />
+          <div className="absolute top-[80%] right-[12%] w-3 h-3 bg-amber-950/50 rounded-full blur-[1px] animate-float-slow z-0" />
+          
+          <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col items-center justify-between relative z-10 py-6">
+            
+            {/* Top Content: Heading, Subtitle, CTA buttons */}
+            <div className="flex flex-col items-center w-full">
+              {/* Massive Heading */}
+              <div className="w-full flex justify-center mt-6">
+                <h1 className="font-display font-black text-[12vw] md:text-[9vw] lg:text-[8.5vw] leading-none tracking-tight flex items-center justify-center gap-1.5 md:gap-3.5 uppercase text-white select-none relative">
+                  <span>A</span>
+                  <span>M</span>
+                  <span>E</span>
+                  <span>E</span>
+                  <span>C</span>
+                  {/* The Cookie replacing the O */}
+                  <div className="relative w-[13vw] h-[13vw] md:w-[10.5vw] md:h-[10.5vw] lg:w-[9.5vw] lg:h-[9.5vw] rounded-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-4 border-white/5 shrink-0 select-none mx-[-1%] z-10 transition-transform duration-300 hover:scale-105">
+                    <Image
+                      src="/cookie_hero.png"
+                      alt="O"
+                      fill
+                      className="object-cover scale-105"
+                      priority
+                    />
+                  </div>
+                </h1>
+              </div>
 
-          {/* Hero Content Left */}
-          <div className="flex flex-col items-center lg:items-start text-center lg:text-left gap-8">
-            <span className="inline-flex items-center gap-1 bg-brown-dark text-cream-light font-display text-[10px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase shadow-[3px_3px_0px_0px_rgba(217,119,6,1)]">
-              <Sparkles className="w-3.5 h-3.5 text-accent animate-spin-slow" /> SLOW CHURNED • OVEN FRESH
-            </span>
+              {/* Subtitle text */}
+              <p className="font-display font-black text-xs md:text-sm lg:text-base tracking-[0.25em] md:tracking-[0.35em] text-white/95 mt-6 uppercase text-center max-w-2xl px-4 drop-shadow-md">
+                Freshly Baked Goodness in Every Bite
+              </p>
 
-            <h1 className="font-display font-black text-5xl md:text-6xl lg:text-7xl text-brown-dark tracking-tight leading-[1.05] uppercase">
-              CRAVE THE <br className="hidden sm:inline" />
-              <span className="relative inline-block text-accent">
-                CHUNK
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-brown-dark rounded" />
-              </span>
-              . VIBE THE <br className="hidden sm:inline" />
-              <span className="bg-brown-dark text-cream-light px-4 py-1 inline-block rotate-[-2deg] rounded-lg shadow-[4px_4px_0px_0px_rgba(217,119,6,1)]">
-                SCOOP
-              </span>
-              .
-            </h1>
-
-            <p className="font-medium text-lg leading-relaxed text-brown-light max-w-lg">
-              Say hello to Delhi NCR&apos;s wildest cookie and gelato drop. NYC-style chunky cookies baked daily, and Italian gelatos crafted in small, slow-churned batches. 100% Eggless. High Vibe.
-            </p>
-
-
-            {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <a
-                href="#menu"
-                className="flex items-center justify-center gap-2 h-14 px-8 bg-accent text-white font-display font-black text-sm tracking-widest rounded-2xl border-2 border-brown-dark shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] active:translate-y-0 text-center"
-              >
-                EXPLORE FLAVORS
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#customize"
-                className="flex items-center justify-center gap-2 h-14 px-8 bg-cream-warm text-brown-dark font-display font-black text-sm tracking-widest rounded-2xl border-2 border-brown-dark shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] active:translate-y-0 text-center"
-              >
-                BUILD A COMBO BOX
-              </a>
+              {/* CTA Buttons */}
+              <div className="flex flex-row items-center gap-4 mt-8 md:mt-10">
+                <Link
+                  href="#menu"
+                  className="flex items-center justify-center h-12 px-8 bg-white text-[#432317] font-display font-black text-xs tracking-widest rounded-full hover:bg-cream-warm hover:-translate-y-0.5 active:translate-y-0 shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-all"
+                >
+                  Menu
+                </Link>
+                <Link
+                  href="#menu"
+                  className="flex items-center justify-center h-12 px-8 bg-transparent text-white border border-white/80 font-display font-black text-xs tracking-widest rounded-full hover:bg-white/15 hover:-translate-y-0.5 active:translate-y-0 transition-all"
+                >
+                  Order Now
+                </Link>
+              </div>
             </div>
-          </div>
 
-          {/* Hero 3D Canvas Right */}
-          <div className="relative w-full flex items-center justify-center">
-            {/* Soft backdrop blur decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
-            <ThreeDCanvas />
+            {/* Customer Testimonial Proof */}
+            <div className="w-full flex justify-center md:justify-end mt-12 md:mt-2 px-4 md:px-8">
+              <div className="flex flex-col items-center md:items-end text-center md:text-right gap-1 bg-[#2e160e]/40 border border-white/5 p-3 rounded-2xl backdrop-blur-sm max-w-[240px]">
+                <div className="flex items-center gap-1.5">
+                  <div className="flex -space-x-1.5">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&h=60&fit=crop&crop=faces" alt="user" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces" alt="user" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop&crop=faces" alt="user" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img className="w-6.5 h-6.5 rounded-full border-2 border-[#432317] object-cover" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=faces" alt="user" />
+                  </div>
+                  <div className="w-6.5 h-6.5 rounded-full bg-white text-brown-dark flex items-center justify-center shadow-md cursor-pointer hover:bg-cream-warm transition-colors">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#432317]" />
+                  </div>
+                </div>
+                <p className="text-[10px] text-white/70 font-semibold tracking-wider uppercase mt-1 leading-normal">
+                  Over 10,000+ cookie lovers served in Delhi & Gurgaon.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom preview grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center w-full mt-12 md:mt-16 border-t border-white/10 pt-8">
+              
+              {/* Card 1: Chocolate Cookie */}
+              <div className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-2xl p-4 backdrop-blur-md hover:bg-white/[0.06] transition-colors">
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10">
+                  <Image
+                    src="/Untitleddesign_13_c5e422f6-8d48-4a20-82e3-ef496b61daae.jpg.jpeg"
+                    alt="Chocolate Cookie"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="font-display font-black text-sm text-white uppercase tracking-wide">
+                    Chocolate Cookie
+                  </span>
+                  <span className="text-[10px] text-white/60 font-semibold mt-1 leading-relaxed">
+                    Rich, soft, and packed with real chocolate chunks.
+                  </span>
+                </div>
+              </div>
+
+              {/* Center Scroll Down Indicator */}
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center p-1 cursor-pointer hover:border-white/50 transition-colors">
+                  <div className="w-1 h-1.5 bg-white rounded-full animate-bounce" />
+                </div>
+                <span className="text-[9px] text-white/40 tracking-widest font-black uppercase text-center">
+                  Scroll down for more information
+                </span>
+              </div>
+
+              {/* Card 2: Butter Cookie */}
+              <div className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-2xl p-4 backdrop-blur-md hover:bg-white/[0.06] transition-colors">
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10">
+                  <Image
+                    src="/Toffee_trouble_3.jpg.jpeg"
+                    alt="Butter Cookie"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="font-display font-black text-sm text-white uppercase tracking-wide">
+                    Butter Cookie
+                  </span>
+                  <span className="text-[10px] text-white/60 font-semibold mt-1 leading-relaxed">
+                    Light, crisp, and melt-in-your-mouth buttery goodness.
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
           </div>
-        </main>
+        </section>
 
         {/* Ticker banner */}
-        <div className="mt-12 md:mt-20">
-          <InteractiveTicker />
-        </div>
+        <InteractiveTicker />
+
 
         {/* Category: Pick your treat Section */}
         <section className="max-w-7xl mx-auto w-full px-4 py-16 md:px-8">
@@ -97,7 +193,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Category 1: Cookies */}
-            <a href="/category/cookie" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <Link href="/category/cookie" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_cookies.png"
@@ -116,10 +212,10 @@ export default function Home() {
                   NYC-style chunky cookies, 100% eggless and freshly baked
                 </p>
               </div>
-            </a>
+            </Link>
 
             {/* Category 2: Gelato */}
-            <a href="/category/gelato" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <Link href="/category/gelato" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_gelato.png"
@@ -138,10 +234,10 @@ export default function Home() {
                   Small-batch, slow churned authentic Italian gelato.
                 </p>
               </div>
-            </a>
+            </Link>
 
             {/* Category 3: Other Treats */}
-            <a href="/category/other" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
+            <Link href="/category/other" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
               <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
                 <Image
                   src="/category_other.png"
@@ -160,7 +256,7 @@ export default function Home() {
                   Crookie
                 </p>
               </div>
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -463,12 +559,11 @@ export default function Home() {
                 NAVIGATION
               </h4>
               <div className="grid grid-cols-2 gap-3 font-display font-bold text-sm text-cream-dark/80">
-                <a href="/" className="hover:text-white transition-colors">Home</a>
-                <a href="/#menu" className="hover:text-white transition-colors">Order</a>
-                <a href="/about" className="hover:text-white transition-colors">About Us</a>
-                <a href="/gifting" className="hover:text-white transition-colors">Corporate Gifting</a>
-                <a href="/contact" className="hover:text-white transition-colors">Contact Us</a>
-                <a href="/work" className="hover:text-white transition-colors">Work With Us</a>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/#menu" className="hover:text-white transition-colors">Order</Link>
+                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+                <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+                <Link href="/work" className="hover:text-white transition-colors">Work With Us</Link>
               </div>
             </div>
 

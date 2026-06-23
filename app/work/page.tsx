@@ -5,14 +5,8 @@ import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
 import Cart from '../../components/Cart';
 import { 
-  Sparkles, 
   ArrowRight, 
-  Heart, 
-  Briefcase, 
-  GraduationCap, 
-  CheckCircle,
-  FileText,
-  BadgeAlert
+  CheckCircle
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -74,7 +68,7 @@ export default function WorkPage() {
         <Navbar />
 
         {/* Work Us Body */}
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-12 md:px-8 relative z-10 flex flex-col gap-12">
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-28 pb-12 md:pt-36 md:px-8 relative z-10 flex flex-col gap-12">
           
           {/* Animated decorative graphics */}
           <div className="absolute top-1/3 left-10 w-24 h-24 bg-accent/5 rounded-full blur-2xl pointer-events-none animate-float-slow" />

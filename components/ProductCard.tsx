@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { useCart, CartItem } from './CartContext';
+import { useCart } from './CartContext';
 import { Plus, Flame, Check, Info } from 'lucide-react';
 
 export interface Product {

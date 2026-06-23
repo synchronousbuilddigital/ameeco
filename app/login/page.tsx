@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
 import Cart from '../../components/Cart';
@@ -44,20 +45,23 @@ export default function LoginPage() {
   const [otp, setOtp] = useState('');
   const [showOtpField, setShowOtpField] = useState(false);
 
-  // UI States
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   // Load user session on mount
   useEffect(() => {
     const stored = localStorage.getItem('ameeco_user');
     if (stored) {
       try {
-        setUser(JSON.parse(stored));
-      } catch (e) {
-        setUser(null);
+        const parsed = JSON.parse(stored);
+        setTimeout(() => {
+          setUser(parsed);
+        }, 0);
+      } catch {
+        setTimeout(() => {
+          setUser(null);
+        }, 0);
       }
     }
   }, []);
@@ -105,7 +109,6 @@ export default function LoginPage() {
         };
         localStorage.setItem('ameeco_user', JSON.stringify(mockUser));
         setUser(mockUser);
-        setSuccess(true);
         triggerConfetti();
         window.dispatchEvent(new Event('ameeco-auth'));
       } else {
@@ -128,7 +131,6 @@ export default function LoginPage() {
         };
         localStorage.setItem('ameeco_user', JSON.stringify(mockUser));
         setUser(mockUser);
-        setSuccess(true);
         triggerConfetti();
         window.dispatchEvent(new Event('ameeco-auth'));
       }
@@ -163,7 +165,6 @@ export default function LoginPage() {
         };
         localStorage.setItem('ameeco_user', JSON.stringify(mockUser));
         setUser(mockUser);
-        setSuccess(true);
         triggerConfetti();
         window.dispatchEvent(new Event('ameeco-auth'));
       }
@@ -175,7 +176,6 @@ export default function LoginPage() {
   const handleLogout = () => {
     localStorage.removeItem('ameeco_user');
     setUser(null);
-    setSuccess(false);
     setShowOtpField(false);
     setName('');
     setEmail('');
@@ -194,7 +194,7 @@ export default function LoginPage() {
         <Navbar />
 
         {/* Auth Page Body */}
-        <main className="flex-1 flex items-center justify-center px-4 py-16 relative z-10 max-w-7xl mx-auto w-full">
+        <main className="flex-1 flex items-center justify-center px-4 pt-28 pb-16 md:pt-36 md:px-8 relative z-10 max-w-7xl mx-auto w-full">
           
           {/* Animated decorative blobs */}
           <div className="absolute top-1/4 left-10 w-24 h-24 bg-accent/10 rounded-full blur-2xl pointer-events-none animate-float-slow" />
@@ -266,13 +266,13 @@ export default function LoginPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a
+                  <Link
                     href="/"
                     className="flex-1 flex items-center justify-center gap-2 h-12 bg-accent text-white font-display font-black text-xs tracking-wider rounded-xl border border-brown-dark shadow-[3px_3px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(60,34,24,1)] active:translate-y-0 text-center transition-all"
                   >
                     GO TO SHOPPING
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="flex items-center justify-center gap-2 h-12 px-6 bg-cream-light hover:bg-cream-warm text-brown-dark font-display font-black text-xs tracking-wider rounded-xl border border-brown-dark shadow-[3px_3px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_0px_rgba(60,34,24,1)] active:translate-y-0 transition-all"
@@ -349,7 +349,6 @@ export default function LoginPage() {
                           };
                           localStorage.setItem('ameeco_user', JSON.stringify(mockUser));
                           setUser(mockUser);
-                          setSuccess(true);
                           triggerConfetti();
                           window.dispatchEvent(new Event('ameeco-auth'));
                           setLoading(false);

@@ -32,23 +32,37 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [checkoutStep, setCheckoutStep] = useState<'cart' | 'shipping' | 'success'>('cart');
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem('ameeco_cart');
     if (savedCart) {
       try {
-        setCart(JSON.parse(savedCart));
+        const parsed = JSON.parse(savedCart);
+        setTimeout(() => {
+          setCart(parsed);
+          setIsLoaded(true);
+        }, 0);
       } catch (e) {
         console.error('Failed to parse cart', e);
+        setTimeout(() => {
+          setIsLoaded(true);
+        }, 0);
       }
+    } else {
+      setTimeout(() => {
+        setIsLoaded(true);
+      }, 0);
     }
   }, []);
 
   // Save cart to localStorage on change
   useEffect(() => {
-    localStorage.setItem('ameeco_cart', JSON.stringify(cart));
-  }, [cart]);
+    if (isLoaded) {
+      localStorage.setItem('ameeco_cart', JSON.stringify(cart));
+    }
+  }, [cart, isLoaded]);
 
   const addToCart = (item: Omit<CartItem, 'quantity'>) => {
     setCart((prev) => {

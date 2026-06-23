@@ -1,11 +1,12 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
 import Cart from '../../components/Cart';
 import Image from 'next/image';
-import { Heart, Sparkles, ChefHat, Award, Globe, HelpCircle, ArrowRight } from 'lucide-react';
+import { Heart, Sparkles, ChefHat, Award, Globe } from 'lucide-react';
 
 export default function AboutPage() {
   return (
@@ -16,7 +17,7 @@ export default function AboutPage() {
         <Navbar />
 
         {/* Hero Section / Motto */}
-        <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-12 md:px-8 relative z-10">
+        <main className="flex-1 max-w-7xl mx-auto w-full px-4 pt-28 pb-12 md:pt-36 md:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-flex items-center gap-1 bg-brown-dark text-cream-light font-display text-[10px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase shadow-[3px_3px_0px_0px_rgba(217,119,6,1)] mb-6">
               <Heart className="w-3.5 h-3.5 text-accent fill-accent animate-pulse" /> OUR MOTTO
@@ -223,12 +224,11 @@ export default function AboutPage() {
                 NAVIGATION
               </h4>
               <div className="grid grid-cols-2 gap-3 font-display font-bold text-sm text-cream-dark/80">
-                <a href="/" className="hover:text-white transition-colors">Home</a>
-                <a href="/#menu" className="hover:text-white transition-colors">Order</a>
-                <a href="/about" className="hover:text-white transition-colors">About Us</a>
-                <a href="/gifting" className="hover:text-white transition-colors">Corporate Gifting</a>
-                <a href="/contact" className="hover:text-white transition-colors">Contact Us</a>
-                <a href="/work" className="hover:text-white transition-colors">Work With Us</a>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <Link href="/#menu" className="hover:text-white transition-colors">Order</Link>
+                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
+                <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
+                <Link href="/work" className="hover:text-white transition-colors">Work With Us</Link>
               </div>
             </div>
 
