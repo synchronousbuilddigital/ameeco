@@ -78,6 +78,27 @@ export default function Home() {
                 Freshly Baked Goodness in Every Bite
               </p>
 
+              {/* Rich Brand Description */}
+              <p className="text-xs md:text-sm text-white/70 font-semibold text-center max-w-xl mt-4 px-6 leading-relaxed">
+                Indulge in Delhi NCR&apos;s ultimate dessert experience. Handcrafting 100% eggless NYC-style chunky cookies and slow-churned Italian gelatos daily with premium Belgian cocoa and organic ingredients.
+              </p>
+
+              {/* Styled Highlight Badges */}
+              <div className="flex flex-wrap justify-center gap-2 md:gap-4 mt-6 select-none max-w-2xl px-4">
+                <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                  🌱 100% Eggless
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                  🍫 Belgian Cocoa
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                  🥣 Handcrafted Daily
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-white/5 border border-white/10 text-white/90 text-[10px] font-bold px-3 py-1.5 rounded-full tracking-wider uppercase">
+                  🚫 No Preservatives
+                </span>
+              </div>
+
               {/* CTA Buttons */}
               <div className="flex flex-row items-center gap-4 mt-8 md:mt-10">
                 <Link
@@ -142,17 +163,27 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Center Scroll Down Indicator */}
-              <div className="flex flex-col items-center gap-2">
-                <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center p-1 cursor-pointer hover:border-white/50 transition-colors">
-                  <div className="w-1 h-1.5 bg-white rounded-full animate-bounce" />
+              {/* Card 2: Dubai Kunafa Gelato */}
+              <div className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-2xl p-4 backdrop-blur-md hover:bg-white/[0.06] transition-colors">
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10">
+                  <Image
+                    src="/category_gelato.png"
+                    alt="Dubai Kunafa Gelato"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-                <span className="text-[9px] text-white/40 tracking-widest font-black uppercase text-center">
-                  Scroll down for more information
-                </span>
+                <div className="flex flex-col text-left">
+                  <span className="font-display font-black text-sm text-white uppercase tracking-wide">
+                    Dubai Kunafa Gelato
+                  </span>
+                  <span className="text-[10px] text-white/60 font-semibold mt-1 leading-relaxed">
+                    Creamy gelato swirled with crispy pistachio & kunafa crackle.
+                  </span>
+                </div>
               </div>
 
-              {/* Card 2: Butter Cookie */}
+              {/* Card 3: Butter Cookie */}
               <div className="flex items-center gap-4 bg-white/[0.03] border border-white/5 rounded-2xl p-4 backdrop-blur-md hover:bg-white/[0.06] transition-colors">
                 <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/10">
                   <Image
@@ -172,6 +203,16 @@ export default function Home() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Relocated Scroll Down Indicator */}
+            <div className="flex flex-col items-center gap-2 mt-8 z-20">
+              <div className="w-5 h-8 border-2 border-white/30 rounded-full flex justify-center p-1 cursor-pointer hover:border-white/50 transition-colors">
+                <div className="w-1 h-1.5 bg-white rounded-full animate-bounce" />
+              </div>
+              <span className="text-[9px] text-white/40 tracking-widest font-black uppercase text-center">
+                Scroll down for more information
+              </span>
             </div>
 
           </div>
