@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import InteractiveTicker from '../components/InteractiveTicker';
 import ProductCard from '../components/ProductCard';
 import Customizer from '../components/Customizer';
+import GelatoWheel from '../components/GelatoWheel';
 import Cart from '../components/Cart';
 import { ArrowRight } from 'lucide-react';
 
@@ -455,68 +456,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Brand Vibe Section (Bento grid setup) */}
-        <section id="story" className="max-w-7xl mx-auto w-full px-4 py-20 md:px-8 border-t-2 border-dashed border-brown-dark/20">
-
-          {/* Header */}
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <h2 className="font-display font-black text-4xl md:text-5xl text-brown-dark tracking-tight uppercase mb-4">
-              WHY WE ARE DIFFERENT
-            </h2>
-            <p className="font-medium text-brown-light leading-relaxed">
-              We don&apos;t do boring desserts. No compromises, no chemical stabilizers, and absolutely no eggs. Just pure premium indulgence.
-            </p>
-          </div>
-
-          {/* Bento grid layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-            {/* Bento Card 1 */}
-            <div className="bg-white border-2 border-brown-dark rounded-3xl p-8 flex flex-col justify-between shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] min-h-[260px] group hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center border border-brown-dark/15 text-2xl group-hover:scale-110 transition-transform">
-                🥚
-              </div>
-              <div>
-                <h3 className="font-display font-black text-xl text-brown-dark uppercase mb-2">
-                  100% EGGLESS
-                </h3>
-                <p className="text-sm font-medium text-brown-light leading-relaxed">
-                  Every single item on our menu is egg-free. Same rich gooey texture, zero compromises.
-                </p>
-              </div>
-            </div>
-
-            {/* Bento Card 2 */}
-            <div className="bg-white border-2 border-brown-dark rounded-3xl p-8 flex flex-col justify-between shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] min-h-[260px] group hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-rose-100 flex items-center justify-center border border-brown-dark/15 text-2xl group-hover:scale-110 transition-transform">
-                🍫
-              </div>
-              <div>
-                <h3 className="font-display font-black text-xl text-brown-dark uppercase mb-2">
-                  NYC-STYLE CHUNKS
-                </h3>
-                <p className="text-sm font-medium text-brown-light leading-relaxed">
-                  No flat biscuits allowed. Our cookies weigh over 120g, offering giant molten chocolate cores.
-                </p>
-              </div>
-            </div>
-
-            {/* Bento Card 3 */}
-            <div className="bg-white border-2 border-brown-dark rounded-3xl p-8 flex flex-col justify-between shadow-[4px_4px_0px_0px_rgba(60,34,24,1)] min-h-[260px] group hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 rounded-2xl bg-purple-100 flex items-center justify-center border border-brown-dark/15 text-2xl group-hover:scale-110 transition-transform">
-                🍦
-              </div>
-              <div>
-                <h3 className="font-display font-black text-xl text-brown-dark uppercase mb-2">
-                  SLOW CHURNED
-                </h3>
-                <p className="text-sm font-medium text-brown-light leading-relaxed">
-                  Italian gelato churned in small batches at low speed to limit air inclusion. Thick and creamy texture only.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Gelato Collection Spin Wheel Section */}
+        <GelatoWheel />
 
         {/* Redesigned Footer */}
         <footer className="bg-brown-dark text-cream-light py-16 px-6 md:px-12 border-t-4 border-brown-dark relative overflow-hidden">
