@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import Cart from '../../components/Cart';
 import { 
   Mail, 
@@ -606,9 +607,7 @@ export default function LoginPage() {
         </main>
 
         {/* Footer info copy */}
-        <footer className="bg-brown-dark text-cream-light py-8 px-6 text-center text-[10px] font-black tracking-widest uppercase border-t-4 border-brown-dark relative z-10">
-          <span>© {new Date().getFullYear()} AMEECO DESSERTS. ALL RIGHTS RESERVED.</span>
-        </footer>
+        <Footer />
 
         {/* Cart drawer overlay */}
         <Cart />

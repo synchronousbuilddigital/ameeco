@@ -7,8 +7,8 @@ import { CartProvider } from '../components/CartContext';
 import Navbar from '../components/Navbar';
 import InteractiveTicker from '../components/InteractiveTicker';
 import ProductCard from '../components/ProductCard';
-import Customizer from '../components/Customizer';
 import GelatoWheel from '../components/GelatoWheel';
+import Footer from '../components/Footer';
 import Cart from '../components/Cart';
 import { ArrowRight } from 'lucide-react';
 
@@ -98,13 +98,6 @@ export default function Home() {
                       priority
                     />
                   </div>
-                  {/* Sparkles Emoji */}
-                  <span 
-                    className="animate-letter-float text-orange-400 drop-shadow-[0_0_20px_rgba(249,115,22,0.6)] select-none text-[8vw] md:text-[6vw] lg:text-[5.5vw] ml-0.5"
-                    style={{ animationDelay: '900ms' }}
-                  >
-                    ✨
-                  </span>
                 </h1>
               </div>
 
@@ -235,131 +228,228 @@ export default function Home() {
 
 
         {/* Category: Pick your treat Section */}
-        <section className="max-w-7xl mx-auto w-full px-4 py-16 md:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12 animate-in fade-in slide-in-from-top-4 duration-300">
-            <span className="inline-flex items-center gap-1.5 bg-brown-dark text-cream-light font-display text-[10px] font-black px-3.5 py-1.5 rounded-full tracking-widest uppercase shadow-[2.5px_2.5px_0px_0px_rgba(217,119,6,1)] mb-4">
-              🧁 CHOOSE YOUR VIBE
-            </span>
-            <h2 className="font-display font-black text-4xl md:text-5xl text-brown-dark tracking-tight uppercase leading-none">
-              Pick your treat
-            </h2>
-          </div>
+        <section id="categories" className="relative w-full py-24 px-4 md:px-8 overflow-hidden bg-dot-grid">
+          {/* Ambient section glows behind layout */}
+          <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-rose-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Category 1: Cookies */}
-            <Link href="/category/cookie" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
-              <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
-                <Image
-                  src="/category_cookies.png"
-                  alt="Ameeco Cookies Category"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-w-768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between">
-                  Cookies
-                  <span className="text-[10px] font-black bg-accent text-white px-2 py-0.5 rounded border border-brown-dark uppercase tracking-wider shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.15)]">100% EGGLESS</span>
-                </h3>
-                <p className="text-xs font-semibold text-brown-light leading-relaxed">
-                  NYC-style chunky cookies, 100% eggless and freshly baked
-                </p>
-              </div>
-            </Link>
+          <div className="max-w-7xl mx-auto relative z-10">
+            {/* Header block with elegant typography pairing */}
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="inline-flex items-center gap-1.5 bg-brown-dark text-cream-light font-display text-[10px] font-black px-4 py-1.5 rounded-full tracking-widest uppercase shadow-[2.5px_2.5px_0px_0px_rgba(217,119,6,1)] mb-4 animate-bounce">
+                🧁 CHOOSE YOUR VIBE
+              </span>
+              <h2 className="flex flex-col gap-1 items-center justify-center">
+                <span className="font-serif-luxury italic text-3xl md:text-4xl text-accent tracking-wide leading-none capitalize">
+                  Indulge in Delhi NCR's Finest
+                </span>
+                <span className="font-display font-black text-5xl md:text-6xl text-brown-dark tracking-tight uppercase leading-none mt-2">
+                  Pick your treat
+                </span>
+              </h2>
+              <div className="w-16 h-1 bg-accent/40 rounded-full mx-auto mt-6" />
+            </div>
 
-            {/* Category 2: Gelato */}
-            <Link href="/category/gelato" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
-              <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
-                <Image
-                  src="/category_gelato.png"
-                  alt="Ameeco Gelato Category"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-w-768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between">
-                  Gelato
-                  <span className="text-[10px] font-black bg-brown-dark text-cream-light px-2 py-0.5 rounded border border-brown-dark uppercase tracking-wider">SLOW CHURNED</span>
-                </h3>
-                <p className="text-xs font-semibold text-brown-light leading-relaxed">
-                  Small-batch, slow churned authentic Italian gelato.
-                </p>
-              </div>
-            </Link>
+            {/* Grid layout */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+              {/* Category 1: Cookies */}
+              <Link
+                href="/category/cookie"
+                className="group relative bg-white/70 hover:bg-white backdrop-blur-md border border-brown-dark/10 rounded-[32px] p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_60px_-15px_rgba(60,34,24,0.15)] flex flex-col gap-6 overflow-hidden hover:border-amber-500/30"
+              >
+                {/* Background glow specific to Cookie theme */}
+                <div className="absolute inset-0 bg-gradient-to-b from-amber-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Squircle Image Container */}
+                <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-warm border border-brown-dark/5 shadow-[0_8px_16px_rgba(60,34,24,0.03)] group-hover:shadow-[0_12px_24px_rgba(60,34,24,0.08)] transition-all duration-500">
+                  <Image
+                    src="/category_cookies.png"
+                    alt="Ameeco Cookies Category"
+                    fill
+                    className="object-cover scale-100 group-hover:scale-108 group-hover:rotate-1 transition-transform duration-700 ease-out"
+                    sizes="(max-w-768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  
+                  {/* Floating tags */}
+                  <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-amber-800 font-display text-[9px] font-black px-3 py-1 rounded-full border border-amber-200/50 shadow-sm uppercase tracking-wider">
+                    🍪 100% EGGLESS
+                  </span>
+                </div>
 
-            {/* Category 3: Other Treats */}
-            <Link href="/category/other" className="group bg-white border-4 border-brown-dark rounded-[32px] p-6 shadow-[6px_6px_0px_0px_rgba(60,34,24,1)] hover:-translate-y-1 hover:shadow-[9px_9px_0px_0px_rgba(60,34,24,1)] transition-all flex flex-col gap-6 overflow-hidden">
-              <div className="relative w-full aspect-[4/3] rounded-2xl border-2 border-brown-dark overflow-hidden bg-cream-warm shadow-[3px_3px_0px_0px_rgba(60,34,24,0.1)]">
-                <Image
-                  src="/category_other.png"
-                  alt="Ameeco Other Treats Category"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-w-768px) 100vw, 33vw"
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between">
-                  Other Treats
-                  <span className="text-[10px] font-black bg-accent text-white px-2 py-0.5 rounded border border-brown-dark uppercase tracking-wider shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.15)]">Crookie</span>
-                </h3>
-                <p className="text-xs font-semibold text-brown-light leading-relaxed">
-                  Crookie
-                </p>
-              </div>
-            </Link>
+                <div className="flex flex-col flex-1 justify-between gap-4 relative z-10">
+                  <div>
+                    <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between group-hover:text-accent transition-colors duration-300">
+                      Cookies
+                    </h3>
+                    <p className="text-xs font-semibold text-brown-light leading-relaxed mt-2">
+                      NYC-style chunky cookies. Soft-baked, giant, gooey centers, and loaded to the brim with Belgian chocolates.
+                    </p>
+                  </div>
+                  
+                  {/* Footer metadata: bestselling item & arrow */}
+                  <div className="flex items-center justify-between border-t border-brown-dark/5 pt-4 mt-2">
+                    <span className="text-[10px] font-bold text-brown-light/60">
+                      Try: <span className="text-brown-dark font-extrabold group-hover:text-accent transition-colors">OG Chocochunk</span>
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-cream-warm group-hover:bg-accent text-brown-dark group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Category 2: Gelato */}
+              <Link
+                href="/category/gelato"
+                className="group relative bg-white/70 hover:bg-white backdrop-blur-md border border-brown-dark/10 rounded-[32px] p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_60px_-15px_rgba(60,34,24,0.15)] flex flex-col gap-6 overflow-hidden hover:border-pink-500/30"
+              >
+                {/* Background glow specific to Gelato theme */}
+                <div className="absolute inset-0 bg-gradient-to-b from-pink-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Squircle Image Container */}
+                <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-warm border border-brown-dark/5 shadow-[0_8px_16px_rgba(60,34,24,0.03)] group-hover:shadow-[0_12px_24px_rgba(60,34,24,0.08)] transition-all duration-500">
+                  <Image
+                    src="/category_gelato.png"
+                    alt="Ameeco Gelato Category"
+                    fill
+                    className="object-cover scale-100 group-hover:scale-108 group-hover:rotate-1 transition-transform duration-700 ease-out"
+                    sizes="(max-w-768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  
+                  {/* Floating tags */}
+                  <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-pink-800 font-display text-[9px] font-black px-3 py-1 rounded-full border border-pink-200/50 shadow-sm uppercase tracking-wider">
+                    🍧 SLOW CHURNED
+                  </span>
+                </div>
+
+                <div className="flex flex-col flex-1 justify-between gap-4 relative z-10">
+                  <div>
+                    <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between group-hover:text-accent transition-colors duration-300">
+                      Gelato
+                    </h3>
+                    <p className="text-xs font-semibold text-brown-light leading-relaxed mt-2">
+                      Authentic Italian gelato. Slowly churned in small batches with local milk, organic fruits, and no preservatives.
+                    </p>
+                  </div>
+                  
+                  {/* Footer metadata: bestselling item & arrow */}
+                  <div className="flex items-center justify-between border-t border-brown-dark/5 pt-4 mt-2">
+                    <span className="text-[10px] font-bold text-brown-light/60">
+                      Try: <span className="text-brown-dark font-extrabold group-hover:text-accent transition-colors">Dubai Kunafa</span>
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-cream-warm group-hover:bg-accent text-brown-dark group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Category 3: Other Treats */}
+              <Link
+                href="/category/other"
+                className="group relative bg-white/70 hover:bg-white backdrop-blur-md border border-brown-dark/10 rounded-[32px] p-6 transition-all duration-500 hover:-translate-y-3 hover:shadow-[0_30px_60px_-15px_rgba(60,34,24,0.15)] flex flex-col gap-6 overflow-hidden hover:border-orange-500/30"
+              >
+                {/* Background glow specific to Other theme */}
+                <div className="absolute inset-0 bg-gradient-to-b from-orange-500/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                {/* Squircle Image Container */}
+                <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden bg-cream-warm border border-brown-dark/5 shadow-[0_8px_16px_rgba(60,34,24,0.03)] group-hover:shadow-[0_12px_24px_rgba(60,34,24,0.08)] transition-all duration-500">
+                  <Image
+                    src="/category_other.png"
+                    alt="Ameeco Other Treats Category"
+                    fill
+                    className="object-cover scale-100 group-hover:scale-108 group-hover:rotate-1 transition-transform duration-700 ease-out"
+                    sizes="(max-w-768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  
+                  {/* Floating tags */}
+                  <span className="absolute top-4 left-4 inline-flex items-center gap-1 bg-white/95 backdrop-blur-md text-orange-800 font-display text-[9px] font-black px-3 py-1 rounded-full border border-orange-200/50 shadow-sm uppercase tracking-wider">
+                    🥐 VIRAL SPECIAL
+                  </span>
+                </div>
+
+                <div className="flex flex-col flex-1 justify-between gap-4 relative z-10">
+                  <div>
+                    <h3 className="font-display font-black text-2xl text-brown-dark uppercase tracking-tight flex items-center justify-between group-hover:text-accent transition-colors duration-300">
+                      Other Treats
+                    </h3>
+                    <p className="text-xs font-semibold text-brown-light leading-relaxed mt-2">
+                      Home of our viral special creations, featuring the Delhi-famous flaky French Crookie baked with cookie dough.
+                    </p>
+                  </div>
+                  
+                  {/* Footer metadata: bestselling item & arrow */}
+                  <div className="flex items-center justify-between border-t border-brown-dark/5 pt-4 mt-2">
+                    <span className="text-[10px] font-bold text-brown-light/60">
+                      Try: <span className="text-brown-dark font-extrabold group-hover:text-accent transition-colors">The Crookie</span>
+                    </span>
+                    <div className="w-8 h-8 rounded-full bg-cream-warm group-hover:bg-accent text-brown-dark group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
           </div>
         </section>
 
         {/* Menu Section */}
-        <section id="menu" className="max-w-7xl mx-auto w-full px-4 py-24 md:px-8">
+        <section id="menu" className="max-w-7xl mx-auto w-full px-4 py-24 md:px-8 relative">
+          {/* Subtle background glows */}
+          <div className="absolute top-10 left-10 w-24 h-24 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-brown-default/5 rounded-full blur-2xl pointer-events-none" />
 
           {/* Header */}
-          <div className="text-center max-w-xl mx-auto mb-16">
-            <h2 className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-brown-dark tracking-tight uppercase leading-none mb-6">
-              Flavour item
+          <div className="text-center max-w-2xl mx-auto mb-16 relative z-10">
+            <h2 className="flex flex-col gap-1 items-center justify-center">
+              <span className="font-serif-luxury italic text-2xl md:text-3xl text-accent tracking-wide block mb-1">
+                Delhi NCR's Sweetest Cravings
+              </span>
+              <span className="font-display font-black text-4xl md:text-5xl lg:text-6xl text-brown-dark tracking-tight uppercase leading-none mt-2">
+                Flavour Atelier
+              </span>
             </h2>
-            <p className="font-medium text-brown-light leading-relaxed">
-              Explore our core catalog. Everything is vegetarian, 100% eggless, and handcrafted daily with premium cocoa and organic fruit bases.
+            <p className="font-semibold text-sm text-brown-light/80 leading-relaxed max-w-xl mx-auto mt-6">
+              Explore our core catalog. Everything is vegetarian, 100% eggless, and handcrafted daily with premium Belgian cocoa and organic fruit bases.
             </p>
  
             {/* Filter controls */}
-            <div className="flex flex-wrap justify-center gap-2 mt-8 bg-cream-warm border border-brown-dark/20 p-1.5 rounded-2xl w-fit mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 mt-10 bg-cream-warm/80 backdrop-blur-md border border-brown-dark/10 p-1.5 rounded-2xl w-fit mx-auto shadow-sm">
               <button
                 onClick={() => setFilter('all')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'all'
-                    ? 'bg-brown-dark text-cream-light'
-                    : 'text-brown-light hover:text-brown-dark'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all duration-300 uppercase relative cursor-pointer ${filter === 'all'
+                    ? 'bg-brown-dark text-cream-light shadow-md scale-105'
+                    : 'text-brown-light hover:text-brown-dark hover:bg-brown-dark/5'
                   }`}
               >
-                ALL CHEWS & SCOOPS
+                ALL SCOOPS & BITES ✨
               </button>
               <button
                 onClick={() => setFilter('cookie')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'cookie'
-                    ? 'bg-brown-dark text-cream-light'
-                    : 'text-brown-light hover:text-brown-dark'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all duration-300 uppercase relative cursor-pointer ${filter === 'cookie'
+                    ? 'bg-brown-dark text-cream-light shadow-md scale-105'
+                    : 'text-brown-light hover:text-brown-dark hover:bg-brown-dark/5'
                   }`}
               >
                 NYC COOKIES 🍪
               </button>
               <button
                 onClick={() => setFilter('gelato')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'gelato'
-                    ? 'bg-brown-dark text-cream-light'
-                    : 'text-brown-light hover:text-brown-dark'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all duration-300 uppercase relative cursor-pointer ${filter === 'gelato'
+                    ? 'bg-brown-dark text-cream-light shadow-md scale-105'
+                    : 'text-brown-light hover:text-brown-dark hover:bg-brown-dark/5'
                   }`}
               >
                 ITALIAN GELATO 🍧
               </button>
               <button
                 onClick={() => setFilter('other')}
-                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all uppercase ${filter === 'other'
-                    ? 'bg-brown-dark text-cream-light'
-                    : 'text-brown-light hover:text-brown-dark'
+                className={`px-5 py-2.5 rounded-xl font-display font-black text-xs tracking-wider transition-all duration-300 uppercase relative cursor-pointer ${filter === 'other'
+                    ? 'bg-brown-dark text-cream-light shadow-md scale-105'
+                    : 'text-brown-light hover:text-brown-dark hover:bg-brown-dark/5'
                   }`}
               >
                 OTHER TREATS 🥐
@@ -377,9 +467,6 @@ export default function Home() {
 
         {/* Ticker banner divider */}
         <InteractiveTicker />
-
-        {/* Box/Combo Builder Customizer */}
-        <Customizer />
 
         {/* Reasons To Love Us Section */}
         <section className="bg-cream-warm border-y-4 border-brown-dark py-24 px-4 md:px-8 relative overflow-hidden">
@@ -513,72 +600,7 @@ export default function Home() {
         <GelatoWheel />
 
         {/* Redesigned Footer */}
-        <footer className="bg-brown-dark text-cream-light py-16 px-6 md:px-12 border-t-4 border-brown-dark relative overflow-hidden">
-          {/* Giant watermark background */}
-          <div className="absolute inset-0 flex flex-col justify-around select-none pointer-events-none overflow-hidden z-0 py-8 opacity-[0.03] md:opacity-[0.04]">
-            <div className="whitespace-nowrap font-display font-black text-[18vw] leading-none uppercase tracking-tighter text-cream-light translate-x-[-15%] select-none">
-              ameeco ameeco
-            </div>
-            <div className="whitespace-nowrap font-display font-black text-[18vw] leading-none uppercase tracking-tighter text-cream-light translate-x-[20%] select-none">
-              ameeco ameeco
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10 border-b border-cream-light/10 pb-12">
-            {/* Branding Column */}
-            <div className="flex flex-col items-start gap-4">
-              <span className="font-display font-black text-4xl tracking-tight text-cream-light uppercase">
-                ameeco<span className="text-accent text-4xl">.</span>
-              </span>
-              <p className="text-sm text-cream-dark/70 font-semibold leading-relaxed max-w-xs">
-                Slow-churned gourmet gelato and 100% eggless chunky cookies baked fresh daily in Delhi NCR.
-              </p>
-              {/* Sticker badge */}
-              <div className="mt-2 bg-accent text-white border border-brown-dark font-display font-black text-[9px] px-3 py-1.5 rounded-full tracking-widest uppercase shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]">
-                🍪 GET THE VIBES DELIVERED
-              </div>
-              {/* Social Links */}
-              <div className="flex flex-wrap gap-2 mt-4 text-[9px] font-black uppercase tracking-wider select-none">
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Instagram</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Snapchat</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">X (Twitter)</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Facebook</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">LinkedIn</a>
-              </div>
-            </div>
-
-            {/* Links Column */}
-            <div className="flex flex-col gap-4">
-              <h4 className="font-display font-black text-xs uppercase tracking-widest text-cream-dark/40">
-                NAVIGATION
-              </h4>
-              <div className="grid grid-cols-2 gap-3 font-display font-bold text-sm text-cream-dark/80">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <Link href="/#menu" className="hover:text-white transition-colors">Order</Link>
-                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
-                <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-                <Link href="/work" className="hover:text-white transition-colors">Work With Us</Link>
-              </div>
-            </div>
-
-            {/* Info Column */}
-            <div className="flex flex-col gap-4">
-              <h4 className="font-display font-black text-xs uppercase tracking-widest text-cream-dark/40">
-                DELIVERY ZONE & HOURS
-              </h4>
-              <p className="text-sm font-semibold text-cream-dark/80 leading-relaxed">
-                📍 Gurugram & New Delhi NCR<br />
-                ⏰ Delivering Daily: 10:00 AM - 12:00 AM<br />
-                💬 Whatsapp Support: +91 99999 99999
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[10px] font-black tracking-widest text-cream-dark/40 uppercase relative z-10">
-            <span>© {new Date().getFullYear()} AMEECO DESSERTS. ALL RIGHTS RESERVED.</span>
-            <span>MADE WITH 💖 IN GURUGRAM, DELHI NCR</span>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Slide-out cart drawer */}
         <Cart />

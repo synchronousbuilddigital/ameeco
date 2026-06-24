@@ -83,4 +83,26 @@ body {
   background: #3c2218;
 }
 
+/* Premium glassmorphic panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(60, 34, 24, 0.08);
+}
+
+.glass-panel-dark {
+  background: rgba(60, 34, 24, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle dot grid background pattern */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(60, 34, 24, 0.06) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+
 

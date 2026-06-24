@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCart } from './CartContext';
 import { ShoppingBag, Sparkles, MapPin, Menu, X } from 'lucide-react';
 
@@ -10,28 +11,28 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [user, setUser] = useState<{ name: string } | null>(null);
 
-  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+  const [scrollY, setScrollY] = useState(0);
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+    if (!isHomePage) {
+      setScrollY(0);
+      return;
+    }
 
-      // Delay transition to capsule until scrolled past 350px (beyond hero section)
-      if (currentScrollY > 350) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
     };
     handleScroll();
 
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [isHomePage]);
+
+  const isScrolled = !isHomePage || scrollY > 150;
 
   React.useEffect(() => {
     const checkUser = () => {
@@ -84,10 +85,40 @@ export default function Navbar() {
             Home
             <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full group-hover:left-0" />
           </Link>
-          <Link href="/#menu" className="hover:text-accent transition-colors relative group py-1">
-            Order
-            <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full group-hover:left-0" />
-          </Link>
+
+          {/* Categories Dropdown Link */}
+          <div className="relative group/dropdown py-1">
+            <Link href="/#categories" className="hover:text-accent transition-colors flex items-center gap-1 cursor-pointer">
+              Categories
+              <svg className="w-3 h-3 group-hover/dropdown:rotate-180 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </Link>
+            {/* Dropdown Menu */}
+            <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-64 bg-[#3c2218] border border-white/10 rounded-2xl p-2 shadow-2xl opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 flex flex-col gap-1 z-50 normal-case tracking-normal">
+              <Link 
+                href="/category/cookie" 
+                className="px-4 py-2.5 rounded-xl text-left text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-all flex items-center justify-between"
+              >
+                <span>Meet the cookies</span>
+                <span className="text-[10px] font-black text-accent bg-accent/15 px-1.5 py-0.5 rounded tracking-wider">🍪</span>
+              </Link>
+              <Link 
+                href="/category/gelato" 
+                className="px-4 py-2.5 rounded-xl text-left text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-all flex items-center justify-between gap-2 whitespace-normal leading-normal"
+              >
+                <span>Gelato (Only in Gurgaon and Delhi)</span>
+                <span className="text-[9px] font-black text-accent bg-accent/15 px-1.5 py-0.5 rounded tracking-wider shrink-0">🍧</span>
+              </Link>
+              <Link 
+                href="/category/other" 
+                className="px-4 py-2.5 rounded-xl text-left text-xs font-bold text-white/80 hover:text-white hover:bg-white/10 transition-all flex items-center justify-between"
+              >
+                <span>Other Treats</span>
+                <span className="text-[10px] font-black text-accent bg-accent/15 px-1.5 py-0.5 rounded tracking-wider">🥐</span>
+              </Link>
+            </div>
+          </div>
           <Link href="/about" className="hover:text-accent transition-colors relative group py-1">
             About Us
             <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full group-hover:left-0" />
@@ -172,13 +203,32 @@ export default function Navbar() {
             >
               Home
             </Link>
-            <Link
-              href="/#menu"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-4 py-2.5 rounded-xl border border-transparent hover:border-white/10 hover:bg-white/5 transition-all"
-            >
-              Order
-            </Link>
+
+            {/* Mobile Categories Links */}
+            <div className="flex flex-col gap-1 border-y border-white/5 py-2 normal-case tracking-normal">
+              <span className="px-4 text-[10px] font-black text-accent tracking-widest uppercase">Categories</span>
+              <Link
+                href="/category/cookie"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-2 rounded-xl text-xs hover:bg-white/5 transition-all text-white/80 flex items-center justify-between"
+              >
+                <span>🍪 Meet the cookies</span>
+              </Link>
+              <Link
+                href="/category/gelato"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-2 rounded-xl text-xs hover:bg-white/5 transition-all text-white/80 flex items-center justify-between gap-2 whitespace-normal leading-normal"
+              >
+                <span>🍧 Gelato (Only in Gurgaon and Delhi)</span>
+              </Link>
+              <Link
+                href="/category/other"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-6 py-2 rounded-xl text-xs hover:bg-white/5 transition-all text-white/80 flex items-center justify-between"
+              >
+                <span>🥐 Other Treats</span>
+              </Link>
+            </div>
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}

@@ -99,14 +99,26 @@ export default function ProductCard({ product }: ProductCardProps) {
     );
   };
 
+  const getGradientBackground = () => {
+    switch (product.type) {
+      case 'cookie':
+        return 'bg-gradient-to-br from-amber-50/40 via-white to-amber-100/10 hover:shadow-amber-500/5';
+      case 'gelato':
+        return 'bg-gradient-to-br from-rose-50/40 via-white to-pink-100/10 hover:shadow-pink-500/5';
+      default:
+        return 'bg-gradient-to-br from-orange-50/40 via-white to-orange-100/10 hover:shadow-orange-500/5';
+    }
+  };
+
   return (
     <div
-      className={`relative bg-white border-2 border-brown-dark rounded-3xl p-6 flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_rgba(60,34,24,1)] group ${showInfo ? 'ring-2 ring-accent' : ''
-        }`}
+      className={`relative border border-brown-dark/10 rounded-[28px] p-5 flex flex-col items-center transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(60,34,24,0.12)] group ${
+        showInfo ? 'ring-2 ring-accent/30' : ''
+      } ${getGradientBackground()}`}
     >
       {/* Badge tag */}
       {product.badge && (
-        <span className="absolute top-4 left-4 bg-accent text-white font-display font-black text-[10px] tracking-wider px-3 py-1 rounded-full border border-brown-dark shadow-[1px_1px_0px_0px_rgba(60,34,24,1)] uppercase">
+        <span className="absolute top-4 left-4 bg-accent/90 backdrop-blur-md text-white font-display font-black text-[9px] uppercase tracking-widest px-3 py-1.5 rounded-full border border-white/20 shadow-[0_4px_12px_rgba(217,119,6,0.15)] z-10">
           {product.badge}
         </span>
       )}
@@ -114,64 +126,69 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Info Button */}
       <button
         onClick={() => setShowInfo(!showInfo)}
-        className="absolute top-4 right-4 text-brown-dark/50 hover:text-brown-dark transition-colors p-1"
+        className="absolute top-4 right-4 text-brown-dark/40 hover:text-accent hover:scale-110 transition-all p-1.5 bg-white/70 hover:bg-white backdrop-blur-sm rounded-full shadow-sm z-10 border border-brown-dark/5 cursor-pointer"
         aria-label="Product Information"
       >
-        <Info className="w-5 h-5" />
+        <Info className="w-4 h-4" />
       </button>
 
       {/* Visual Container */}
-      <div className="w-full h-48 rounded-2xl border-2 border-brown-dark overflow-hidden relative mb-5 shadow-[3px_3px_0px_0px_rgba(60,34,24,1)]">
+      <div className="relative w-full h-52 rounded-[24px] overflow-hidden bg-cream-warm border border-brown-dark/5 shadow-[0_6px_12px_rgba(60,34,24,0.03)] mb-5 group-hover:rounded-[32px] group-hover:shadow-[0_12px_24px_rgba(60,34,24,0.1)] transition-all duration-500">
         {renderVisual()}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
       </div>
 
       {/* Info Panel Overlap */}
-      {showInfo ? (
-        <div className="absolute inset-x-4 top-24 bottom-24 bg-cream-warm border-2 border-brown-dark rounded-2xl p-4 z-20 flex flex-col justify-between animate-in zoom-in-95 duration-200">
+      {showInfo && (
+        <div className="absolute inset-4 bg-cream-warm/95 backdrop-blur-md border border-brown-dark/10 rounded-[24px] p-5 z-20 flex flex-col justify-between transition-all duration-300 ease-out shadow-lg">
           <div>
-            <h4 className="font-display font-black text-brown-dark text-sm tracking-wide uppercase mb-1">
-              Nutri Specs
+            <h4 className="font-display font-black text-brown-dark text-xs tracking-widest uppercase mb-3 flex items-center justify-between border-b border-brown-dark/10 pb-1.5">
+              <span>Nutri Specs</span>
+              <span className="text-[8px] font-black text-accent tracking-wider bg-accent/10 px-2 py-0.5 rounded">100% VEG</span>
             </h4>
-            <div className="flex items-center gap-1 bg-brown-dark/10 text-brown-dark px-2 py-1 rounded-md w-fit mb-3">
-              <Flame className="w-3.5 h-3.5 text-accent" />
-              <span className="text-xs font-bold">{product.calories} kcal</span>
+            <div className="flex items-center gap-1.5 bg-brown-dark/5 text-brown-dark px-2.5 py-1.5 rounded-lg w-fit mb-4">
+              <Flame className="w-3.5 h-3.5 text-accent animate-pulse" />
+              <span className="text-xs font-black tracking-wide">{product.calories} kcal</span>
             </div>
-            <p className="text-xs font-medium leading-relaxed text-brown-light">
-              This delicious treat is 100% vegetarian, eggless, and made with only high-quality natural ingredients. Hand-baked in small batches to preserve its rich textures.
+            <p className="text-[11px] font-semibold leading-relaxed text-brown-light">
+              Indulge without worry! This delicious treat is 100% vegetarian, eggless, and made with only high-quality natural ingredients. Hand-baked in small batches to preserve its rich textures.
             </p>
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              <span className="text-[8px] font-black bg-emerald-500/10 text-emerald-800 px-2.5 py-0.5 rounded border border-emerald-500/20 uppercase tracking-wider">🚫 Preservatives</span>
+              <span className="text-[8px] font-black bg-amber-500/10 text-amber-800 px-2.5 py-0.5 rounded border border-amber-500/20 uppercase tracking-wider">🍫 Real Cocoa</span>
+            </div>
           </div>
           <button
             onClick={() => setShowInfo(false)}
-            className="w-full py-1.5 bg-brown-dark text-cream-light rounded-lg font-display text-xs font-bold tracking-wider hover:bg-brown-default"
+            className="w-full py-2.5 bg-brown-dark hover:bg-brown-default text-cream-light rounded-xl font-display text-[10px] font-black tracking-widest hover:-translate-y-0.5 active:translate-y-0 transition-all uppercase cursor-pointer"
           >
             CLOSE DETAILS
           </button>
         </div>
-      ) : null}
+      )}
 
       {/* Title & Description */}
       <div className="w-full text-center flex-1 mb-5">
-        <h3 className="font-display font-black text-xl md:text-2xl text-brown-dark tracking-tight mb-2 uppercase">
+        <h3 className="font-display font-black text-xl text-brown-dark tracking-tight mb-2 uppercase group-hover:text-accent transition-colors duration-300">
           {product.name}
         </h3>
-        <p className="text-sm font-medium text-brown-light leading-relaxed max-w-[220px] mx-auto">
+        <p className="text-xs font-semibold text-brown-light/80 leading-relaxed max-w-[240px] mx-auto">
           {product.description}
         </p>
       </div>
 
       {/* Footer (Price & Add/Buy buttons) */}
-      <div className="w-full flex flex-col gap-4 border-t-2 border-dashed border-brown-dark/20 pt-4 mt-auto">
+      <div className="w-full flex flex-col gap-4 border-t border-brown-dark/5 pt-4 mt-auto">
         <div className="flex items-center justify-between w-full">
           <div className="flex flex-col items-start">
-            <span className="text-[9px] font-black uppercase text-brown-light tracking-widest">
+            <span className="text-[8px] font-black uppercase text-brown-light/60 tracking-wider">
               PRICE
             </span>
-            <span className="font-display font-black text-xl text-brown-dark">
+            <span className="font-display font-black text-xl text-brown-dark group-hover:text-accent transition-colors">
               ₹{product.price}
             </span>
           </div>
-          <span className="inline-flex items-center gap-1 text-[9px] font-black bg-brown-dark/5 text-brown-dark px-2.5 py-1 rounded border border-brown-dark/10 uppercase tracking-wider leading-none">
+          <span className="inline-flex items-center gap-1.5 text-[8px] font-black bg-cream-warm border border-brown-dark/10 px-3 py-1 rounded-full uppercase tracking-widest text-brown-dark/80">
             {product.type === 'cookie' ? '🍪 Cookie' : product.type === 'gelato' ? '🍧 Gelato' : '🥐 Treat'}
           </span>
         </div>
@@ -180,10 +197,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           <button
             onClick={handleAddToCart}
             disabled={added}
-            className={`flex items-center justify-center gap-1 font-display font-black text-[10px] tracking-wider py-2.5 rounded-xl border-2 border-brown-dark shadow-[2px_2px_0px_0px_rgba(60,34,24,1)] transition-all ${added
-                ? 'bg-emerald-500 text-white translate-x-0.5 translate-y-0.5 shadow-[1px_1px_0px_0px_rgba(60,34,24,1)]'
-                : 'bg-cream-warm hover:bg-accent hover:text-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(60,34,24,1)] text-brown-dark'
-              }`}
+            className={`flex items-center justify-center gap-1.5 font-display font-black text-[9px] tracking-widest py-3 rounded-xl border transition-all duration-300 cursor-pointer ${
+              added
+                ? 'bg-emerald-500 text-white border-emerald-600 shadow-[0_4px_12px_rgba(16,185,129,0.3)]'
+                : 'bg-cream-warm hover:bg-brown-dark border-brown-dark/10 text-brown-dark hover:text-cream-light shadow-sm hover:shadow-[0_8px_16px_rgba(60,34,24,0.1)] hover:-translate-y-0.5'
+            }`}
           >
             {added ? (
               <>
@@ -200,7 +218,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           <button
             onClick={handleBuyNow}
-            className="flex items-center justify-center gap-1 bg-accent text-white hover:bg-accent/90 font-display font-black text-[10px] tracking-wider py-2.5 rounded-xl border-2 border-brown-dark shadow-[2px_2px_0px_0px_rgba(60,34,24,1)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_0px_rgba(60,34,24,1)] active:translate-y-0 transition-all text-center"
+            className="flex items-center justify-center gap-1.5 bg-accent hover:bg-amber-600 text-white font-display font-black text-[9px] tracking-widest py-3 rounded-xl border border-accent/20 shadow-sm hover:shadow-[0_8px_16px_rgba(217,119,6,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer text-center animate-pulse-subtle"
           >
             <span>BUY NOW</span>
           </button>

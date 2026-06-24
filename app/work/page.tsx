@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import Cart from '../../components/Cart';
 import { 
   ArrowRight, 
@@ -276,9 +277,7 @@ export default function WorkPage() {
         </main>
 
         {/* Brand Vibe footer divider copy */}
-        <footer className="bg-brown-dark text-cream-light py-8 px-6 text-center text-[10px] font-black tracking-widest uppercase border-t-4 border-brown-dark relative z-10">
-          <span>© {new Date().getFullYear()} AMEECO DESSERTS. ALL RIGHTS RESERVED.</span>
-        </footer>
+        <Footer />
 
         {/* Sliding cart context */}
         <Cart />

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { CartProvider } from '../../components/CartContext';
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 import Cart from '../../components/Cart';
 import Image from 'next/image';
 import { Heart, Sparkles, ChefHat, Award, Globe } from 'lucide-react';
@@ -185,71 +186,7 @@ export default function AboutPage() {
         </main>
 
         {/* Redesigned Footer */}
-        <footer className="bg-brown-dark text-cream-light py-16 px-6 md:px-12 border-t-4 border-brown-dark relative overflow-hidden">
-          {/* Giant watermark background */}
-          <div className="absolute inset-0 flex flex-col justify-around select-none pointer-events-none overflow-hidden z-0 py-8 opacity-[0.03] md:opacity-[0.04]">
-            <div className="whitespace-nowrap font-display font-black text-[18vw] leading-none uppercase tracking-tighter text-cream-light translate-x-[-15%] select-none">
-              ameeco ameeco
-            </div>
-            <div className="whitespace-nowrap font-display font-black text-[18vw] leading-none uppercase tracking-tighter text-cream-light translate-x-[20%] select-none">
-              ameeco ameeco
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10 border-b border-cream-light/10 pb-12">
-            {/* Branding Column */}
-            <div className="flex flex-col items-start gap-4">
-              <span className="font-display font-black text-4xl tracking-tight text-cream-light uppercase">
-                ameeco<span className="text-accent text-4xl">.</span>
-              </span>
-              <p className="text-sm text-cream-dark/70 font-semibold leading-relaxed max-w-xs">
-                Slow-churned gourmet gelato and 100% eggless chunky cookies baked fresh daily in Delhi NCR.
-              </p>
-              <div className="mt-2 bg-accent text-white border border-brown-dark font-display font-black text-[9px] px-3 py-1.5 rounded-full tracking-widest uppercase shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]">
-                🍪 GET THE VIBES DELIVERED
-              </div>
-              {/* Social Links */}
-              <div className="flex flex-wrap gap-2 mt-4 text-[9px] font-black uppercase tracking-wider select-none">
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Instagram</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Snapchat</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">X (Twitter)</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">Facebook</a>
-                <a href="#" className="bg-cream-light text-brown-dark border border-brown-dark px-2.5 py-1.5 rounded-lg hover:bg-accent hover:text-white transition-colors">LinkedIn</a>
-              </div>
-            </div>
-
-            {/* Links Column */}
-            <div className="flex flex-col gap-4">
-              <h4 className="font-display font-black text-xs uppercase tracking-widest text-cream-dark/40">
-                NAVIGATION
-              </h4>
-              <div className="grid grid-cols-2 gap-3 font-display font-bold text-sm text-cream-dark/80">
-                <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <Link href="/#menu" className="hover:text-white transition-colors">Order</Link>
-                <Link href="/about" className="hover:text-white transition-colors">About Us</Link>
-                <Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link>
-                <Link href="/work" className="hover:text-white transition-colors">Work With Us</Link>
-              </div>
-            </div>
-
-            {/* Info Column */}
-            <div className="flex flex-col gap-4">
-              <h4 className="font-display font-black text-xs uppercase tracking-widest text-cream-dark/40">
-                DELIVERY ZONE & HOURS
-              </h4>
-              <p className="text-sm font-semibold text-cream-dark/80 leading-relaxed">
-                📍 Gurugram & New Delhi NCR<br />
-                ⏰ Delivering Daily: 10:00 AM - 12:00 AM<br />
-                💬 Whatsapp Support: +91 99999 99999
-              </p>
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-[10px] font-black tracking-widest text-cream-dark/40 uppercase relative z-10">
-            <span>© {new Date().getFullYear()} AMEECO DESSERTS. ALL RIGHTS RESERVED.</span>
-            <span>MADE WITH 💖 IN GURUGRAM, DELHI NCR</span>
-          </div>
-        </footer>
+        <Footer />
 
         {/* Slide-out cart drawer */}
         <Cart />
